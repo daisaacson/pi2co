@@ -9,13 +9,13 @@ conversionFactor = 3.3 / 65535
 
 sleepSeconds = 5
 
-def toFahrenheit(raw):
-    # convert raw temp sensor reading to Fahrenheit
-    return 32 + ( 1.8 * ( 27 - ((raw * conversionFactor) - 0.706)/0.001721 ) )
-
 def toCelcius(raw):
     # convert raw temp sensor reading to Celcius
     return 27 - ((raw * conversionFactor) - 0.706)/0.001721
+
+def toFahrenheit(raw):
+    # convert raw temp sensor reading to Fahrenheit
+    return 32 + ( 1.8 * toCelcius(raw) )
 
 while True:
     # read raw temperature from sensor
