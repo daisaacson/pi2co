@@ -2,12 +2,12 @@ from machine import ADC
 import time
 
 temperatureBuffer = []
-temperatureBufferLength = 10
+temperatureBufferLength = 60
+temperatureFrequency = 10
 
 temperatureSensor = machine.ADC(4)
 conversionFactor = 3.3 / 65535
 
-sleepSeconds = 5
 
 def toCelcius(raw):
     # convert raw temp sensor reading to Celcius
@@ -29,4 +29,4 @@ while True:
     # Print averaged temperature reading
     print ("Temperature: {0:.1f}°F".format(toFahrenheit(sum(temperatureBuffer)/len(temperatureBuffer))))
 
-    time.sleep(sleepSeconds)
+    time.sleep(temperatureFrequency)
